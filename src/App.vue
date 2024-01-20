@@ -4,14 +4,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import AlumnosList from "@/components/ListaAlumnos.vue";
-
-export default {
-  components: {
-    AlumnosList,
-  },
-};
 </script>
 
 <style>
