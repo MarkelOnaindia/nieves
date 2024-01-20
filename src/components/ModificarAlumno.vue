@@ -1,20 +1,26 @@
 <template>
   <div>
     <h3>Modificar Alumno</h3>
-    <form @submit.prevent="modificarAlumno">
-      <label>ID: {{ alumnoSeleccionado.id }}</label><br>
-      <label>Nombre: <input v-model="alumnoSeleccionado.nombre" type="text" required></label><br>
-      <label>Fecha de Nacimiento: <input v-model="alumnoSeleccionado.fechaNacimiento" type="date" required></label><br>
-      <button type="submit">Guardar Cambios</button>
-    </form>
+    <label>Nombre: <input v-model="alumnoModificado.nombre" type="text" required></label><br>
+    <label>Fecha de Nacimiento: <input v-model="alumnoModificado.fechaNacimiento" type="date" required></label><br>
+    <button @click="modificarAlumno">Modificar</button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineProps, defineEmits } from 'vue';
 
 const props = defineProps(['alumnoSeleccionado']);
+const emit = defineEmits(['modificarAlumno']);
+
+const alumnoModificado = ref({
+  id: props.alumnoSeleccionado.id,
+  nombre: props.alumnoSeleccionado.nombre,
+  fechaNacimiento: props.alumnoSeleccionado.fechaNacimiento,
+});
+
 const modificarAlumno = () => {
-  emit('modificarAlumno', props.alumnoSeleccionado);
+  emit('modificarAlumno', alumnoModificado.value);
 };
 </script>
+
