@@ -2,15 +2,25 @@
   <div>
     <h3>Buscar Alumno</h3>
     <div>
-      <input v-model="idBuscar" type="text" placeholder="ID del Alumno">
+      <input v-model="idBuscar" type="number" min="1" placeholder="ID del Alumno">
       <button @click="buscarAlumno">Buscar</button>
     </div>
-    <div v-if="alumnoEncontrado">
-      <h3>Detalles del Alumno</h3>
-      <p>ID: {{ alumnoEncontrado.id }}</p>
-      <p>Nombre: {{ alumnoEncontrado.nombre }}</p>
-      <p>Fecha de Nacimiento: {{ alumnoEncontrado.fechaNacimiento }}</p>
-    </div>
+    <table v-if="alumnoEncontrado">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Fecha de Nacimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ alumnoEncontrado.id }}</td>
+          <td>{{ alumnoEncontrado.nombre }}</td>
+          <td>{{ alumnoEncontrado.fechaNacimiento }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -31,3 +41,21 @@ watch(() => props.alumnos, () => {
 });
 
 </script>
+
+<style scoped>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+</style>

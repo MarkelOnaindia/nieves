@@ -2,9 +2,20 @@
   <div>
     <h3>Agregar Alumno</h3>
     <form @submit.prevent="agregarAlumno">
-      <label>ID: <input v-model="nuevoAlumno.id" type="number" required min="1"></label><br>
-      <label>Nombre: <input v-model="nuevoAlumno.nombre" type="text" required></label><br>
-      <label>Fecha de Nacimiento: <input v-model="nuevoAlumno.fechaNacimiento" type="date" required></label><br>
+      <table>
+        <tr>
+          <td>ID:</td>
+          <td><input v-model="nuevoAlumno.id" type="number" required min="1"></td>
+        </tr>
+        <tr>
+          <td>Nombre:</td>
+          <td><input v-model="nuevoAlumno.nombre" type="text" required></td>
+        </tr>
+        <tr>
+          <td>Fecha de Nacimiento:</td>
+          <td><input v-model="nuevoAlumno.fechaNacimiento" type="date" required></td>
+        </tr>
+      </table>
       <button type="submit">Agregar</button>
     </form>
   </div>
@@ -40,3 +51,21 @@ const validarIdUnico = (nuevoId) => {
   return !alumnosGuardados.some((alumno) => alumno.id === nuevoId);
 };
 </script>
+
+<style scoped>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+</style>
