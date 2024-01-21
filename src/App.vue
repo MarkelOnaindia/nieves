@@ -6,6 +6,11 @@
 
 <script setup>
 import AlumnosList from "@/components/ListaAlumnos.vue";
+import { provide, ref } from 'vue';
+
+const frase= ref("Los alumnos de Desarrollo de Aplicaciones Web");
+
+provide("fraseAHijo",frase);
 </script>
 
 <style>

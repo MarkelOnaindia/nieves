@@ -1,6 +1,6 @@
 <template>
   <div>
-   <h2>Lista de Alumnos</h2>
+   <h2>{{fraseInyectada}}</h2>
     <button @click="verTodos">Ver Todos</button>
     <button @click="mostrarAgregar">Agregar</button>
     <button @click="mostrarBuscar">Buscar</button>
@@ -51,6 +51,8 @@
 import { ref, onMounted, inject } from 'vue';
 import AgregarAlumno from "@/components/AgregarAlumno.vue";
 import BuscarAlumno from "@/components/BuscarAlumno.vue";
+
+const fraseInyectada = inject("fraseAHijo");
 
 const localStorageKey = 'alumnosData';
 
